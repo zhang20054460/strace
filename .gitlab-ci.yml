@@ -8,30 +8,18 @@ variables:
   SLEEP_A_BIT: "sleep 0.2"
   VERBOSE: "1"
 
-gcc-x86_64:
+musl-x86_64:
   stage: test
   script: ci/run-build-and-tests.sh
   variables:
-    CC: "gcc"
+    CC: "musl-gcc"
     TARGET: "x86_64"
+    KHEADERS: "torvalds/linux"
 
-gcc-x86:
+musl-x86:
   stage: test
   script: ci/run-build-and-tests.sh
   variables:
-    CC: "gcc"
+    CC: "musl-gcc"
     TARGET: "x86"
-
-clang-x86_64:
-  stage: test
-  script: ci/run-build-and-tests.sh
-  variables:
-    CC: "clang"
-    TARGET: "x86_64"
-
-clang-x86:
-  stage: test
-  script: ci/run-build-and-tests.sh
-  variables:
-    CC: "clang"
-    TARGET: "x86"
+    KHEADERS: "torvalds/linux"
